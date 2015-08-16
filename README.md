@@ -15,4 +15,7 @@ A Platform Demo
 `git add . -A`
 
 # 提交修改
-`git commit`
+`git commit -m "init"`
+
+# 推送修改
+`git push origin master`
