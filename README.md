@@ -19,3 +19,6 @@ A Platform Demo
 
 # 推送修改
 `git push origin master`
+
+# 拉取最新代码
+`git pull --rebase`
