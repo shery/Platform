@@ -20,5 +20,18 @@ $(document).ready(function(){
  		}
  	});
 
+ 	$('#email').on('blur', function() {
+ 		var email = $(this).val();
+		$.post('/validExistUser', {
+			email: email
+		}, function(data) {
+	 		if (data) {
+	 			$('#error_email').show();
+	 		} else {
+	 			$('#error_email').hide();
+	 		}
+		});
+ 	});
+
 });
 
