@@ -142,7 +142,9 @@ body {
 	border: 0;
 	outline: 0;
 	color: #222;
-
+}
+.frm_msg_content {
+	color: #fa0;
 }
 .frm_tips {
 	width: 320px;

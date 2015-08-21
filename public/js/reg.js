@@ -1,7 +1,12 @@
 $(document).ready(function(){
-	var currentUsername = $('#email');
-	var currentPwd1 = $('#password');
-	var currentPwd2 = $('#password2');
+	var currentUsername = $('#email').val();
+	var currentPwd1 = $('#password').val();
+	var currentPwd2 = $('#password2').val();
+
+	$('#email').on('blur',function (data){
+		showEmail(data);
+	});
+	
 	
  	$('#register').on('click', function(event) {
  		event.preventDefault();
@@ -15,23 +20,22 @@ $(document).ready(function(){
 			}, function(data) {
 				showError(data);
 			});
- 		} else {
- 			showError('验证失败');
+ 		} else if (password != password2 ) {
+ 			showError('两次密码输入不匹配');
  		}
  	});
 
- 	$('#email').on('blur', function() {
- 		var email = $(this).val();
-		$.post('/validExistUser', {
-			email: email
-		}, function(data) {
-	 		if (data) {
-	 			$('#error_email').show();
-	 		} else {
-	 			$('#error_email').hide();
-	 		}
-		});
- 	});
+ 	// $('#email').on('blur', function() {
+ 	// 	var email = $(this).val();
+		// $.post('/validExistUser', {
+		// 	email: email
+		// }, function(data) {
+	 // 		if (data) {
+	 // 			$('#error_email').show();
+	 // 		} else {
+	 // 			$('#error_email').hide();
+	 // 		}
+		// });
+ 	// });
 
 });
-
