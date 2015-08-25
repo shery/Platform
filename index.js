@@ -10,7 +10,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded())
 
 app.post('/login', function(req, res) {
-	if (user[req.body.username] == req.body.password) {
+	if (user[req.body.email] == req.body.password) {
 		res.send('登陆成功');
 	} else {
 		res.send('失败！');
@@ -56,13 +56,24 @@ app.post('/register', function(req, res) {
 	}
 });
 
-// app.post('/validExistUser', function(req, res) {
-// 	var email = req.body.email;
-// 	if (user[req.body.email]) {
-// 		res.send(true);
-// 	} else {
-// 		res.send(false);
-// 	}
-// });
+app.post('/validExistUser', function(req, res) {
+	var email = req.body.email;
+	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	if (user[req.body.email] && regex.test(email)) {
+		res.send({text:"该用户名已被使用",color:"org"});
+	} else if (!user[req.body.email] && regex.test(email)) {
+		res.send({text:"该用户名可以使用",color:"gre"});
+	}
+});
+
+app.post('/validEmail', function(req, res) {
+	var email = req.body.email;
+	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	if (email == '') {
+		res.send("用户名不能为空");
+	} else if (!regex.test(email)) {
+		res.send("邮箱格式错误");
+	}
+});
 
 app.listen(80);

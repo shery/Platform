@@ -3,9 +3,9 @@ $(document).ready(function(){
 	var currentPwd1 = $('#password').val();
 	var currentPwd2 = $('#password2').val();
 
-	$('#email').on('blur',function (data){
-		showEmail(data);
-	});
+	// $('#email').on('blur',function (data){
+	// 	showEmail(data);
+	// });
 	
 	
  	$('#register').on('click', function(event) {
@@ -24,18 +24,23 @@ $(document).ready(function(){
  			showError('两次密码输入不匹配');
  		}
  	});
-
- 	// $('#email').on('blur', function() {
- 	// 	var email = $(this).val();
-		// $.post('/validExistUser', {
-		// 	email: email
-		// }, function(data) {
-	 // 		if (data) {
-	 // 			$('#error_email').show();
-	 // 		} else {
-	 // 			$('#error_email').hide();
-	 // 		}
-		// });
- 	// });
+ 	$('#email').on('mousedown', function(event) {
+ 		$('.frm_etips').hide();
+ 		$('#error_email').hide();
+ 	});
+ 	$('#email').on('blur', function(event) {
+ 		event.preventDefault();
+ 		var email = $(this).val();
+		$.post('/validExistUser', {
+			email: email
+		}, function(data) {
+	 		validExistUser(data.text,data.color);
+		});
+		$.post('/validEmail', {
+			email: email
+		}, function(data) {
+	 		validEmail(data);
+		});
+ 	});
 
 });

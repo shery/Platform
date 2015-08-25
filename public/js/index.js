@@ -28,7 +28,7 @@ $(document).ready(function (){
 		var password = $('#password').val();
 		event.preventDefault();
 		$.post('/ajaxLogin', {
-			username: username,
+			email: username,
 			password: password
 		}, function(data) {
 			showError(data);

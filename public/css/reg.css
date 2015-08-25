@@ -83,6 +83,7 @@ body {
   	padding-bottom: 60px;
 }
 .form_wrp {
+	position: relative;
 	float: left;
   	width: 700px;
   	border-right: 1px solid #e7e7eb;
@@ -150,6 +151,20 @@ body {
 	width: 320px;
 	padding-top: 4px;
 	color: #8d8d8d;
+}
+.frm_etips {
+	position: absolute;
+	height: 32px;width: 100px;
+	line-height: 32px;
+	top: 94px;
+	right: 20px;
+	font-size: 10px;
+}
+.org {
+	color: #EA7C2C;
+}
+.gre {
+	color: #37BD6C;
 }
 .tool_bar {
 	padding-top: 20px;
