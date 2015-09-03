@@ -20,6 +20,7 @@ img { border: none; }
 .space_1 { margin-top: 1px; }
 .space_5 { margin-top: 5px; }
 .space_10 { margin-top: 10px; }
+.space_20 { margin-top: 10px; }
 
 #error {
 	position: absolute;

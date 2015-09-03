@@ -1,6 +1,6 @@
-.w1024 {
+.w1198 {
 	position: relative;
-	width: 1024px;
+	width: 1198px;
 	margin-left: auto;
   	margin-right: auto;
 }
@@ -72,10 +72,99 @@ body {
 }
 .dyh_list {
 	position: relative;
-	overflow: hidden;
-	padding: 25px 0;
+	padding: 25px 0px;
 	height: 42px;
 	border-bottom: 1px solid #eee;
+}
+.dyh_wrap {
+	position: relative;
+	width: 1016px;height: 42px;
+	overflow: hidden;
+}
+.dyh_add {
+	position: absolute;
+	right: 120px;
+	top: 32px;
+	opacity: .25;
+}
+.dyh_add img {
+	width: 30px;
+}
+.dyh_add:hover {
+	opacity: .5;
+	cursor: pointer;
+}
+#add_rules {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	width: 400px;height: 300px;
+	margin: -165px 0 0 -215px;
+	padding: 14px;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	background: #fff;
+	box-shadow: 0 0 20px rgba(0,0,0,.2)
+}
+#add_rules .close {
+	position: absolute;
+	top: 0;
+	right: 3px;
+	z-index: 101;
+}
+#add_rules .close:hover {
+	cursor: pointer;
+	color: #44b549;
+}
+#add_rules dl {
+	text-align: center;
+}
+#add_rules dt {
+	padding-top: 10px;
+}
+#add_rules dt h3 {
+	font: 16px/80px "微软雅黑";
+}
+#add_rules dd {
+	font: 12px/24px "微软雅黑";
+	padding: 30px 0;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	margin: 0 50px;
+}
+#add_rules dd a {
+	margin-left: 5px;
+	color: #fa0;
+}
+#add_rules dd a:hover {
+	text-decoration: underline;
+}
+#add_rules dd p {
+	width: 200px;
+	margin: 0 auto;
+	text-align: left;
+}
+.accredit_btn {
+	border-color: #44b549;
+	background: #44b549;
+	color: #fff;
+}
+#add_rules .accredit_btn:hover {
+	background: #2f9833;
+	
+}
+#add_rules dt a:hover {
+	background: #eee;
+}
+#add_rules dt a {
+	display: inline-block;
+	width: 80px;height: 27px;
+	margin: 0 5px;
+	border-radius: 3px;
+	border: 1px solid #eee;
+	font: 12px/27px "微软雅黑"；
 }
 .prev {
 	position: absolute;
@@ -98,14 +187,19 @@ body {
 	line-height: 28px; 
 	text-align: center;
 	color: #fff;
+	cursor: pointer;
 	background: rgba(0,0,0,.15);
 }
 .nav:hover {
 	background: #44b549;
 }
+.dyList {
+	position: absolute;
+	left: 0;
+}
 .dyh_list dl {
 	height: 42px;
-	/*width: 1000px;*/
+	width: 10000px;
 	overflow: hidden;
 }
 .dyh_list dd {
@@ -124,15 +218,8 @@ body {
 	width: 30px;height: 30px;
 	padding: 5px 20px;
 }
-.dyh_list dt img {
-	float: left;
-	width: 30px;
-	opacity: .25;
-}
-.dyh_list dt img:hover {
-	opacity: .5;
-	cursor: pointer;
-}
+
+
 .dyh_list dd p {
 	height: 16px;
 	padding-top: 1px;
@@ -264,6 +351,7 @@ body {
 	height: 403px;
 }
 .masonry-brick {
+	display: none;
 	float: left;
 	width: 293px;
 	margin: 0 20px 20px 0;
@@ -396,11 +484,11 @@ body {
 	margin: -6px 0 0 -3px;
 	border: 6px solid transparent;
 }
-.prev b {
+.prevPage b {
 	border-left-width: 0;
 	border-right-color: #999;
 }
-.next b {
+.nextPage b {
 	border-right-width: 0;
 	border-left-color: #999;
 }
