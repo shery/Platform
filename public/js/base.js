@@ -58,17 +58,27 @@ var showPrev = function() {
 var creatListInit = function(num,title,date,tips,imgurl,content,mark) {
 		var pageNum = $('.current_page').text();
 		var a = pageNum * 3 - 3;
-		var b = pageNum * 3 - 2;
+		// var b = pageNum * 3 - 2;
 		var c = pageNum * 3;
-		$('.masonry').append('<li><h3><a class="src_title" herf="#"></a></h3><div class="src_tips"><b class="src_date"></b><b class="src_tip"></b></div><div class="msgbox"><div class="src_img"><img class="src_imgurl" src="#" /></div><p class="msgbox_content"></p></div><table class="btns"><tbody><tr><td><a herf="#"><i class="edit"></i></a></td><td><a class="src_edt" href="#"></a></td><td><a herf="#"><i class="delete"></i></a></td></tr></tbody></table></li>');
-		$('.masonry li').addClass("masonry-brick");
-		$('.masonry-brick').slice(num).addClass(num);
-		$('.src_title').parents('.'+num).find(".src_title").text(title);
-		$('.src_date').parents('.'+num).find(".src_date").text(date);
-		$('.src_tip').parents('.'+num).find(".src_tip").text(tips);
-		$('.src_imgurl').parents('.'+num).find(".src_imgurl").attr("src",imgurl);
-		$('.msgbox_content').parents('.'+num).find(".msgbox_content").text(content);
-		$('.src_edt').parents('.'+num).find(".src_edt").text(mark);
-
+		if ($('.masonry-brick')) {
+			$('.masonry').append('<li><h3><a class="src_title" herf="#"></a></h3><div class="src_tips"><b class="src_date"></b><b class="src_tip"></b></div><div class="msgbox"><div class="src_img"><img class="src_imgurl" src="#" /></div><p class="msgbox_content"></p></div><table class="btns"><tbody><tr><td><a herf="#"><i class="edit"></i></a></td><td><a class="src_edt" href="#"></a></td><td><a herf="#"><i class="delete"></i></a></td></tr></tbody></table></li>');
+			$('.masonry li').addClass("masonry-brick");
+			$('.masonry-brick').slice(num).addClass(num);
+			$('.src_title').parents('.'+num).find(".src_title").text(title);
+			$('.src_date').parents('.'+num).find(".src_date").text(date);
+			$('.src_tip').parents('.'+num).find(".src_tip").text(tips);
+			$('.src_imgurl').parents('.'+num).find(".src_imgurl").attr("src",imgurl);
+			$('.msgbox_content').parents('.'+num).find(".msgbox_content").text(content);
+			$('.src_edt').parents('.'+num).find(".src_edt").text(mark);	
+		};
 		$('.masonry-brick').slice(a,c).show();
+
+};
+var showList = function() {
+	var pageNum = $('.current_page').text();
+	var a = pageNum * 3 - 3;
+	// var b = pageNum * 3 - 2;
+	var c = pageNum * 3;
+	$('.masonry-brick').hide();
+	$('.masonry-brick').slice(a,c).show();
 };

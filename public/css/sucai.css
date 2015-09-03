@@ -432,6 +432,13 @@ body {
 .btns td a:hover {
 	color: #cc565a;
 }
+.src_edt_input {
+	display: block;
+  	height: 44px;width: 131px;
+  	z-index: 1;
+  	background: #fff;
+  	text-align: center;
+}
 .btns td a i {
 	display: inline-block;
 	margin: 13px auto;
