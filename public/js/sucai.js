@@ -1,6 +1,13 @@
 $(document).ready(function () {
 	showInti();
-	$.post('/swipePage', {}, function(data) {
+	setTotalpage();
+	var pageNum = $('.current_page').text();
+	$.post('/swipePage', {
+		pageNum:pageNum
+	}, function(data) {
+		if ($('.masonry-brick')) {
+					$('.masonry-brick').remove();
+				};
 			for (i in data) {
 				creatListInit(i,data[i].h3,data[i].date,data[i].tips,data[i].imgSrc,data[i].p,data[i].a);
 			};
@@ -8,10 +15,10 @@ $(document).ready(function () {
 	$('.dyh_add').click(function(){
 		$('#add_rules').show();
 	});
-	$('.close').click(function(){
+	$('#add_rules .close').click(function(){
 		$('#add_rules').hide();
 	});
-	$('#close').click(function(){
+	$('#add_rules #close').click(function(){
 		$('#add_rules').hide();
 	});
 	$('.next').click(function(){
@@ -22,10 +29,45 @@ $(document).ready(function () {
 	});	
 	$('.to_page').on('click', function(event) {
  		event.preventDefault();
- 		var to_page = $('.in_page').val();
- 		$('.current_page').text(to_page);
-		showList();
+ 		var to_page = parseInt($('.in_page').val());
+ 		var total_page = parseInt($('.total_page').text());
+ 		if (to_page <= total_page ) {
+ 			$('.current_page').text(to_page);
+ 			$.post('/swipePage', {
+				pageNum:to_page
+			}, function(data) {
+				if ($('.masonry-brick')) {
+					$('.masonry-brick').remove();
+				};
+				for (i in data) {
+					creatListInit(i,data[i].h3,data[i].date,data[i].tips,data[i].imgSrc,data[i].p,data[i].a);
+				};
+			});
+ 		} else{
+ 			alert("Error: wrong page number!");
+ 		};
  	});	
+ 	$('.in_page').on('keypress',function(event) {
+		if (event.keyCode == "13") {
+			var to_page = parseInt($('.in_page').val());
+ 			var total_page = parseInt($('.total_page').text());
+	 		if (to_page <= total_page ) {
+	 			$('.current_page').text(to_page);
+	 			$.post('/swipePage', {
+					pageNum:to_page
+				}, function(data) {
+					if ($('.masonry-brick')) {
+						$('.masonry-brick').remove();
+					};
+					for (i in data) {
+						creatListInit(i,data[i].h3,data[i].date,data[i].tips,data[i].imgSrc,data[i].p,data[i].a);
+					};
+				});
+	 		} else{
+	 			alert("Error: wrong page number!");
+	 		};
+		};
+	});
  	$('.nextPage').on('click',function(event) {
  		event.preventDefault();
  		var current_page = $('.current_page').text();
@@ -34,10 +76,28 @@ $(document).ready(function () {
  			current_page -= 0;
  			current_page += 1;
  			$('.current_page').text(current_page);
- 			showList();
+	 		$.post('/swipePage', {
+					pageNum:current_page
+				}, function(data) {
+					if ($('.masonry-brick')) {
+						$('.masonry-brick').remove();
+					};
+					for (i in data) {
+						creatListInit(i,data[i].h3,data[i].date,data[i].tips,data[i].imgSrc,data[i].p,data[i].a);
+					};
+			});
  		} else{
  			$('.current_page').text(1);
- 			showList();
+	 		$.post('/swipePage', {
+					pageNum: 1
+				}, function(data) {
+					if ($('.masonry-brick')) {
+						$('.masonry-brick').remove();
+					};
+					for (i in data) {
+						creatListInit(i,data[i].h3,data[i].date,data[i].tips,data[i].imgSrc,data[i].p,data[i].a);
+					};
+			});			
  		};
  	});
   	$('.prevPage').on('click',function(event) {
@@ -47,15 +107,54 @@ $(document).ready(function () {
  		if (current_page != 1) {
  			current_page -= 1;
  			$('.current_page').text(current_page);
- 			showList();
+	 		$.post('/swipePage', {
+					pageNum:current_page
+				}, function(data) {
+					if ($('.masonry-brick')) {
+						$('.masonry-brick').remove();
+					};
+					for (i in data) {
+						creatListInit(i,data[i].h3,data[i].date,data[i].tips,data[i].imgSrc,data[i].p,data[i].a);
+					};
+			});
  		} else{
- 			$('.current_page').text(4);
- 			showList();
+ 			$('.current_page').text(total_page);
+	 		$.post('/swipePage', {
+					pageNum: total_page
+				}, function(data) {
+					if ($('.masonry-brick')) {
+						$('.masonry-brick').remove();
+					};
+					for (i in data) {
+						creatListInit(i,data[i].h3,data[i].date,data[i].tips,data[i].imgSrc,data[i].p,data[i].a);
+					};
+			});	
  		};
  	});
- 	$('.edit').on('click',function(event) {
- 		event.preventDefault();
- 		$('.src_edt').parent().append('<input class="src_edt_input" type="text" />');
- 	
+ 	$('.newmsg').on("click",function() {
+ 		$('.newmsg_dom').show();
  	});
+ 	$('.newmsg_dom .close').click(function(){
+		$('.newmsg_dom').hide();
+	});
+	$('.newmsg_dom #close').click(function(){
+		$('.newmsg_dom').hide();
+	});
+	$('.newmsg_dom .list_submit').click(function(){
+		addList();
+		var pageNum = $('.current_page').text();
+		$.post('/swipePage', {
+			pageNum:pageNum
+		}, function(data) {
+			if ($('.masonry-brick')) {
+				$('.masonry-brick').remove();
+			};
+			for (i in data) {
+				creatListInit(i,data[i].h3,data[i].date,data[i].tips,data[i].imgSrc,data[i].p,data[i].a);
+			};
+		});
+	});
+ 	domEvent();
+
 });
+

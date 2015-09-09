@@ -302,6 +302,7 @@ body {
 }
 .main {
 	float: right;
+	position: relative;
 	width: 993px;
 	border-left: 1px solid #eee;
 }
@@ -338,6 +339,77 @@ body {
 	text-align: center;
 	background: #44b549;
 }
+.newmsg_dom {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	width: 400px;height: 320px;
+	margin: -165px 0 0 -215px;
+	padding: 14px;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	background: #fff;
+	box-shadow: 0 0 20px rgba(0,0,0,.2)
+}
+.newmsg_dom .close {
+	position: absolute;
+	top: 0;
+	right: 3px;
+	z-index: 101;
+}
+.newmsg_dom .close:hover {
+	cursor: pointer;
+	color: #44b549;
+}
+.newmsg_dom dl {
+	padding: 20px;
+}
+.newmsg_dom dt {
+	margin-bottom: 8px;
+}
+.newmsg_dom dt:last-child {
+	margin-top: 30px;
+	text-align: center;
+}
+.newmsg_dom dt p {
+	float: left;
+	width: 20%;
+	height: 30px;
+	margin: 0 5px;
+	border-radius: 3px;
+/*	border: 1px solid #eee;*/
+	text-align: center;
+	font: 30px/30px bold "微软雅黑"；
+}
+.newmsg_dom dt input {
+	float: left;
+	width: 70%;
+	height: 28px;
+	vertical-align: middle;
+	border: 1px solid #eee;
+}
+.newmsg_dom dt a {
+	display: inline-block;
+	width: 80px;height: 27px;
+	margin: 0 5px;
+	border-radius: 3px;
+	border: 1px solid #eee;
+	text-align: center;
+	font: 12px/27px "微软雅黑"；
+}
+.newmsg_dom dt a:hover {
+	background: #eee;
+}
+.list_submit {
+  border-color: #44b549;
+  background: #44b549;
+  color: #fff;
+}
+.newmsg_dom .list_submit:hover {
+	background: #2f9833;
+}
 .tab_title .newmsg:hover {
 	padding: 0;
 	border: 0;
@@ -351,7 +423,7 @@ body {
 	height: 403px;
 }
 .masonry-brick {
-	display: none;
+	/*display: none;*/
 	float: left;
 	width: 293px;
 	margin: 0 20px 20px 0;
@@ -419,23 +491,34 @@ body {
 	border-color: inherit;
 }
 .btns td {
-	min-width: 50px;
+	position: relative;
+	max-width: 193px;
 	border-top: 1px solid #eee;
 	font: 14px/44px "微软雅黑"; 
 	text-align: center;
 }
+.btns td:first-child {
+	width: 50px;
+}
+.btns td:last-child {
+	width: 50px;
+}
 .btns td a {
 	display: block;
 	height: 44px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	color: #44b549;
 }
 .btns td a:hover {
 	color: #cc565a;
 }
 .src_edt_input {
+	position: absolute;
+	top: 2px;
 	display: block;
-  	height: 44px;width: 131px;
-  	z-index: 1;
+  	height: 40px;width: 193px;
+  	border: none;
   	background: #fff;
   	text-align: center;
 }
