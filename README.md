@@ -1,11 +1,15 @@
 # A Platform Demo 
 # 仿微信公众管理平台
 # 利用Express框架模拟前后端交互
+
 ---
+
 ## 环境
 - node.js
 - Express
+
 ---
+
 ## 运行测试
 1. 进入测试文件根目录，启动服务器文件**index.js**
 ![](src/img/step1.png)
