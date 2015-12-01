@@ -39,5 +39,5 @@
 ![](src/img/step17.png)
 ![](src/img/step18.png)
 ![](src/img/step19.png)
-10. 测试使用后端数据库，包含在服务器文件**index.js**中的**user**对象中
+10. 后端测试数据存储在**index.js**中的**user**对象中
 ![](src/img/step20.png)
