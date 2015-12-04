@@ -56,29 +56,7 @@ var showPrev = function() {
 };
 
 var creatListInit = function(num,title,date,tips,imgurl,content,mark) {
-		// var pageNum = $('.current_page').text();
-		// var a = pageNum * 3 - 3;
-		// // var b = pageNum * 3 - 2;
-		// var c = pageNum * 3;
-	$('.masonry').append('<li class="'+ num +'data masonry-brick"><h3><a class="src_title" herf="#">'+ title +'</a></h3><div class="src_tips"><b class="src_date">'+ date +'</b><b class="src_tip">'+ tips +'</b></div><div class="msgbox"><div class="src_img"><img class="src_imgurl" src='+ imgurl +' /></div><p class="msgbox_content">'+ content +'</p></div><table class="btns"><tbody><tr><td><a class="edit_a" herf="#"><i class="edit"></i></a></td><td><a class="src_edt'+ num +'" href="#">'+ mark +'</a></td><td><a class="delete_a" herf="#"><i class="delete"></i></a></td></tr></tbody></table></li>');
-	// $('.edit_a'+ num +'').on('click',function(event) {
-	//  	if ($('.val'+ num +'').length == 0) {
-	//  		$('.src_edt'+ num +'').parent().append('<input class="src_edt_input val'+ num +'" type="text" />');
-	//  	};	
- // 	});
- 	
- 	
-};
-var setTips = function() {
-	// var pageNum = $('.current_page').text();
-	// var a = pageNum * 3 - 3;
-	// // var b = pageNum * 3 - 2;
-	// var c = pageNum * 3;
-	// $('.masonry-brick').hide();
-	// $('.masonry-brick').slice(a,c).show();
-		
-			 
-		
+	$('.masonry').append('<li class="'+ num +'data masonry-brick"><h3><a class="src_title" herf="#">'+ title +'</a></h3><div class="src_tips"><b class="src_date">'+ date +'</b><b class="src_tip">'+ tips +'</b></div><div class="msgbox"><div class="src_img"><img class="src_imgurl" src='+ imgurl +' /></div><p class="msgbox_content">'+ content +'</p></div><table class="btns"><tbody><tr><td><a class="edit_a" herf="#"><i class="edit"></i></a></td><td><a class="src_edt'+ num +'" href="#">'+ mark +'</a></td><td><a class="delete_a" herf="#"><i class="delete"></i></a></td></tr></tbody></table></li>');	
 };
 
 var domEvent = function() {
@@ -126,15 +104,6 @@ var domEvent = function() {
 		setTotalpage();
  	});	
 };
-
-function Trim(str,is_global)
-{
- var result;  
- result = str.replace(/(^\s+)|(\s+$)/g,"");
- if(is_global.toLowerCase()=="g")
-	result = result.replace(/\s/g,"");
- return result;
-}
 
 var setTotalpage = function() {
 	$.post('/getTotalpage', {}, function(data) {
